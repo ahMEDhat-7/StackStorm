@@ -1,0 +1,21 @@
+{
+  "name": "webappbuild",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix apps/backend\" \"npm run dev --prefix apps/frontend\"",
+    "build": "npm run build:frontend && npm run copy:frontend && npm run build:backend",
+    "build:frontend": "npm run build --prefix apps/frontend",
+    "build:backend": "npm run build --prefix apps/backend",
+"copy:frontend": "shx rm -rf apps/backend/public && shx mkdir -p apps/backend/public && shx cp -r apps/frontend/dist/* apps/backend/public/",
+    "start": "npm run start --prefix apps/backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "shx": "^0.4.0"
+  }
+}
