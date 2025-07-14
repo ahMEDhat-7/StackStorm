@@ -8,13 +8,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '../public')));
 
 // API endpoint
-app.get('/api/hello', (_, res) => {
-  res.json({ message: 'Hello from backend' });
+app.get("/api/hello", (_, res) => {
+  res.json({ message: "UP & RUNNING'" });
 });
 
 // Fallback to index.html for React routes
-app.get('*', (_, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+app.get(/^\/(?!api).*/, (_, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.listen(PORT, () => {
